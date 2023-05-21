@@ -1,0 +1,26 @@
+{
+  "name": "cloud-computing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bangkit-Brewtopia/Cloud-Computing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bangkit-Brewtopia/Cloud-Computing/issues"
+  },
+  "homepage": "https://github.com/Bangkit-Brewtopia/Cloud-Computing#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase": "^9.22.0",
+    "nodemon": "^2.0.22"
+  }
+}

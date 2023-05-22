@@ -1,6 +1,9 @@
 const firebase = require("firebase/compat/app");
 require("firebase/compat/auth");
 require("firebase/compat/firestore");
+require("firebase/compat/storage");
+const { v4: uuidv4 } = require("uuid");
+const axios = require("axios");
 
 const signUp = async (req, res) => {
   try {
@@ -48,6 +51,75 @@ const signIn = async (req, res) => {
   }
 };
 
+const editProfile = async (req, res) => {
+  try {
+    const { name, password } = req.body;
+    const user = firebase.auth().currentUser;
+
+    if (!user) {
+      return res.status(401).json({ error: "User is not authenticated" });
+    }
+
+    await user.updateProfile({
+      displayName: name,
+    });
+
+    if (password) {
+      await user.updatePassword(password);
+    }
+
+    const userDocRef = firebase.firestore().collection("users").doc(user.uid);
+    await userDocRef.update({
+      name,
+    });
+
+    res.json({ message: "Profile updated successfully" });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const uploadProfilePicture = async (req, res) => {
+  try {
+    const user = firebase.auth().currentUser;
+    const { imageUrl } = req.body;
+
+    const response = await axios.get(imageUrl, {
+      responseType: "arraybuffer",
+    });
+
+    const imageBuffer = Buffer.from(response.data, "binary");
+
+    const storageRef = firebase.storage().ref();
+    const folderRef = storageRef.child("profile_pictures");
+    const filename = `${uuidv4()}.jpeg`;
+    const fileRef = folderRef.child(filename);
+
+    const metadata = {
+      contentType: "image/jpeg",
+    };
+
+    await fileRef.put(imageBuffer, metadata);
+    const downloadUrl = await fileRef.getDownloadURL();
+
+    const userId = user.uid;
+
+    await user.updateProfile({
+      photoURL: downloadUrl,
+    });
+
+    await firebase.firestore().collection("users").doc(userId).update({
+      photoURL: downloadUrl,
+    });
+
+    res.json({ message: "Profile picture uploaded successfully" });
+  } catch (error) {
+    console.error("Error uploading profile picture:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const logout = (req, res) => {
   firebase.auth().signOut();
   res.json({ message: "Logout successful" });
@@ -57,4 +129,6 @@ module.exports = {
   signUp,
   signIn,
   logout,
+  editProfile,
+  uploadProfilePicture,
 };

@@ -19,3 +19,10 @@ Tech: Python, FastAPI
 * Run on local server
 ``` uvicorn main:app --reload ```
 * Open browser, and navigate to ``` localhost:8000/docs ``` to test endpoint with SwaggerUI 
+
+## POST Request
+Gambar ngga perlu disimpan ke storage, langsung upload pakai POST method
+### Request Body
+bentar ygy
+
+### Response Body

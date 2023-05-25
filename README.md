@@ -1,9 +1,35 @@
 # Cloud-Computing
 
-## Authentication ✔️
-### Tech: Firebase, Firestore
-... 
-<br>
+## Authentication And User-related API ✔️
+### Tech: Firebase Authentication, Firestore, 
+#### List of endpoints:
+| Endpoint     | Request Parameter      | Method     | Purpose |
+| ------------- | ------------- | -------- | -------- |
+| api/user/signup          | email, password, name         | Post  | Create new credentail for a user |
+| api/user/signin            | email, password        | Post  | Starting a session based on user credential |
+| api/user/logout          | -         | Post  | Stop the user session |
+| api/user/edit-profile            | name, password        | Put  | Update user's name and password |
+| api/user/upload-profile-picture            | image        | Post  | Upload image for profile picture by passing the image URL |
+
+#### How to run:
+* Clone this repository 
+```sh
+https://github.com/Bangkit-Brewtopia/Cloud-Computing.git
+```
+* Move to the project directory
+```sh
+cd Cloud-Computing
+```
+* Install the dependencies
+```sh
+npm i
+```
+* Run the server locally
+```sh
+npm run start
+```
+* The server will run on ``` localhost:5000 ``` and you can test the endpoints
+
 ## Model Deployment ✔️
 Model used: model_keras_4.h5
 <br>

@@ -59,6 +59,7 @@ npm run start
 
 ## Model Deployment ✔️
 Model used: model_keras_4.h5
+The model is accessible via ```https://predict-zwqpt72g4a-et.a.run.app/predict``` with an image file (binary) as the request body. It is deployed using Google Cloud Run.
 <br>
 Tech: Python, FastAPI
 <br>

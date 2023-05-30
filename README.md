@@ -3,7 +3,7 @@
 ## Authentication And User-related API ✔️
 ### Tech: Firebase Authentication, Firestore, Node JS, Express JS
 #### List of endpoints:
-| Endpoint     | Request Parameter      | Method     | Purpose |
+| Endpoint     | Request Body      | Method     | Purpose |
 | ------------- | ------------- | -------- | -------- |
 | api/user/signup          | email, password, name         | Post  | Create new credentail for a user |
 | api/user/signin            | email, password        | Post  | Starting a session based on user credential |
@@ -33,10 +33,10 @@ npm run start
 ## Article-related API ✔️
 ### Tech: Firestore, Node JS, Express JS
 #### List of endpoints:
-| Endpoint     | Request Parameter      | Method     | Purpose |
+| Endpoint     | Request Body      | Method     | Purpose |
 | ------------- | ------------- | -------- | -------- |
 | api/article/          | -         | Get  | Get all of the articles |
-| api/article/{id}            | id        | Get  | Get article based on ID |
+| api/article/:id            | -        | Get  | Get article based on ID |
 
 #### How to run:
 * Clone this repository 

@@ -1,7 +1,7 @@
 # Cloud-Computing
 
 ## Authentication And User-related API ✔️
-### Tech: Firebase Authentication, Firestore, 
+### Tech: Firebase Authentication, Firestore, Node JS, Express JS
 #### List of endpoints:
 | Endpoint     | Request Parameter      | Method     | Purpose |
 | ------------- | ------------- | -------- | -------- |
@@ -10,6 +10,33 @@
 | api/user/logout          | -         | Post  | Stop the user session |
 | api/user/edit-profile            | name, password        | Put  | Update user's name and password |
 | api/user/upload-profile-picture            | image        | Post  | Upload image for profile picture by passing the image URL |
+
+#### How to run:
+* Clone this repository 
+```sh
+https://github.com/Bangkit-Brewtopia/Cloud-Computing.git
+```
+* Move to the project directory
+```sh
+cd Cloud-Computing
+```
+* Install the dependencies
+```sh
+npm i
+```
+* Run the server locally
+```sh
+npm run start
+```
+* The server will run on ``` localhost:5000 ``` and you can test the endpoints
+
+## Article-related API ✔️
+### Tech: Firestore, Node JS, Express JS
+#### List of endpoints:
+| Endpoint     | Request Parameter      | Method     | Purpose |
+| ------------- | ------------- | -------- | -------- |
+| api/article/          | -         | Get  | Get all of the articles |
+| api/article/{id}            | id        | Get  | Get article based on ID |
 
 #### How to run:
 * Clone this repository 

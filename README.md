@@ -77,9 +77,10 @@ Tech: Python, FastAPI
 ``` uvicorn main:app --reload ```
 * Open browser, and navigate to ``` localhost:8000/docs ``` to test endpoint with SwaggerUI 
 
-## POST Request
-Gambar ngga perlu disimpan ke storage, langsung upload pakai POST method
-### Request Body
-bentar ygy
-
-### Response Body
+## Chatbot ✔️
+Model used: chatbot_model_4.h5
+<br>
+Tech: Python, Fast API, Google API custom search
+<p>This takes a sentence as user input and send post request ('/') and it will give the response</p>
+<br>
+Deployment on process

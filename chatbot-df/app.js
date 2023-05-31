@@ -4,14 +4,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PORT = 5000;
-const key = "AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ";
-const cx = "97f5dcf95601b403d";
+const PORT = process.env.PORT || 5000;
+// const key = "AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ";
+// const cx = "97f5dcf95601b403d";
 
 const customSearch = async (query) => {
   try {
     let response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${key}&cx=${cx}&q=${query}`
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.key}&cx=${process.env.cx}&q=${query}`
     );
 
     const data = await response.json();
@@ -128,5 +128,5 @@ app.post("/dialogflow", async (req, res) => {
 // });
 
 app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });

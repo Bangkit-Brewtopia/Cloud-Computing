@@ -5,13 +5,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
-// const key = "AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ";
-// const cx = "97f5dcf95601b403d";
+const key = "AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ";
+const cx = "97f5dcf95601b403d";
 
 const customSearch = async (query) => {
   try {
     let response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${process.env.key}&cx=${process.env.cx}&q=${query}`
+      `https://www.googleapis.com/customsearch/v1?key=${key}&cx=${cx}&q=${query}`
     );
 
     const data = await response.json();
@@ -43,26 +43,10 @@ app.post("/dialogflow", async (req, res) => {
   let queryText = req.body.queryResult.queryText;
 
   if (action === "input.unknown") {
-    // console.log(req.body);
+    console.log(JSON.stringify(req.body));
     let result = await customSearch(queryText);
     // console.log(result);
     if (result.status == 1) {
-      // const payload = {
-      //   fulfillmentMessages: [
-      //     {
-      //       card: {
-      //         title: "Instagram Profile",
-      //         buttons: [
-      //           {
-      //             text: "Visit Profile",
-      //             postback: "https://www.instagram.com/nadyamumtazah_",
-      //           },
-      //         ],
-      //       },
-      //     },
-      //   ],
-      // };
-
       const payload = {
         fulfillmentMessages: [
           {
@@ -92,6 +76,7 @@ app.post("/dialogflow", async (req, res) => {
       res.send(payload);
     } else {
       res.send({
+        result: result,
         fulfillmentText: `Sorry, I'm not able to help with that.`,
       });
     }

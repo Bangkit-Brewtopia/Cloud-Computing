@@ -30,10 +30,10 @@ const signUp = async (req, res) => {
       email,
     });
 
-    res.json({ message: "Signup successful", user });
+    res.json({ message: "User Created", error: false });
   } catch (error) {
     console.error("Error during signup:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: true, message: error.message });
   }
 };
 
@@ -44,10 +44,20 @@ const signIn = async (req, res) => {
       .auth()
       .signInWithEmailAndPassword(email, password);
     const token = await user.user.getIdToken();
-    res.json({ message: "Login successful", token });
+    const userID = await user.user.uid;
+    const name = await user.user.displayName;
+    res.json({
+      error: false,
+      message: "success",
+      loginResult: {
+        userID: userID,
+        name: name,
+        token: token,
+      },
+    });
   } catch (error) {
     console.error("Error during login:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: true, message: error.message });
   }
 };
 
@@ -73,10 +83,10 @@ const editProfile = async (req, res) => {
       name,
     });
 
-    res.json({ message: "Profile updated successfully" });
+    res.json({ message: "Profile updated successfully", error: false });
   } catch (error) {
     console.error("Error updating profile:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: true, message: error.message });
   }
 };
 
@@ -113,16 +123,19 @@ const uploadProfilePicture = async (req, res) => {
       photoURL: downloadUrl,
     });
 
-    res.json({ message: "Profile picture uploaded successfully" });
+    res.json({
+      message: "Profile picture uploaded successfully",
+      error: false,
+    });
   } catch (error) {
     console.error("Error uploading profile picture:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: true, message: error.message });
   }
 };
 
 const logout = (req, res) => {
   firebase.auth().signOut();
-  res.json({ message: "Logout successful" });
+  res.json({ error: false, message: "Logout successful" });
 };
 
 module.exports = {

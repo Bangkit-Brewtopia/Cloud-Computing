@@ -1,13 +1,25 @@
-const firebase = require("firebase/compat/app");
-require("firebase/compat/firestore");
+const admin = require("firebase-admin");
+const serviceAccount = require("../serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 const getArticles = async (req, res) => {
   try {
     const articleId = "FdwOpeqA59D1htoaKfi4";
-    const articleRef = firebase
-      .firestore()
-      .collection("articles")
-      .doc(articleId);
+
+    const authHeader = req.headers.authorization;
+    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+
+    if (!idToken) {
+      return res.status(401).json({ error: true, message: "Unauthorized" });
+    }
+
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const userId = decodedToken.uid;
+
+    const articleRef = admin.firestore().collection("articles").doc(articleId);
     const articleSnapshot = await articleRef.get();
 
     if (articleSnapshot.exists) {
@@ -29,10 +41,18 @@ const getArticles = async (req, res) => {
 const getArticleByID = async (req, res) => {
   try {
     const articleId = "FdwOpeqA59D1htoaKfi4";
-    const articleRef = firebase
-      .firestore()
-      .collection("articles")
-      .doc(articleId);
+
+    const authHeader = req.headers.authorization;
+    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+
+    if (!idToken) {
+      return res.status(401).json({ error: true, message: "Unauthorized" });
+    }
+
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const userId = decodedToken.uid;
+
+    const articleRef = admin.firestore().collection("articles").doc(articleId);
     const articleSnapshot = await articleRef.get();
 
     if (articleSnapshot.exists) {
@@ -43,7 +63,7 @@ const getArticleByID = async (req, res) => {
         article: articleData.data[req.params.id - 1],
       });
     } else {
-      res.status(404).send({ error: false, message: "Article not found" });
+      res.status(404).json({ error: false, message: "Article not found" });
     }
   } catch (error) {
     console.error("Error retrieving article:", error);

@@ -4,6 +4,7 @@ require("firebase/compat/firestore");
 require("firebase/compat/storage");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
+const admin = require("firebase-admin");
 
 const signUp = async (req, res) => {
   try {
@@ -64,21 +65,36 @@ const signIn = async (req, res) => {
 const editProfile = async (req, res) => {
   try {
     const { name, password } = req.body;
-    const user = firebase.auth().currentUser;
 
-    if (!user) {
+    const authHeader = req.headers.authorization;
+    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+
+    if (!idToken) {
+      return res.status(401).json({ error: true, message: "Unauthorized" });
+    }
+
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const userId = decodedToken.uid;
+
+    if (!userId) {
       return res.status(401).json({ error: "User is not authenticated" });
     }
 
-    await user.updateProfile({
-      displayName: name,
-    });
+    const user = await admin.auth().getUser(userId);
 
-    if (password) {
-      await user.updatePassword(password);
+    if (user.displayName !== name) {
+      await admin.auth().updateUser(userId, {
+        displayName: name,
+      });
     }
 
-    const userDocRef = firebase.firestore().collection("users").doc(user.uid);
+    if (password) {
+      await admin.auth().updateUser(userId, {
+        password: password,
+      });
+    }
+
+    const userDocRef = admin.firestore().collection("users").doc(userId);
     await userDocRef.update({
       name,
     });
@@ -92,7 +108,22 @@ const editProfile = async (req, res) => {
 
 const uploadProfilePicture = async (req, res) => {
   try {
-    const user = firebase.auth().currentUser;
+    const authHeader = req.headers.authorization;
+    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+
+    if (!idToken) {
+      return res.status(401).json({ error: true, message: "Unauthorized" });
+    }
+
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const userId = decodedToken.uid;
+
+    if (!userId) {
+      return res.status(401).json({ error: "User is not authenticated" });
+    }
+
+    const user = await admin.auth().getUser(userId);
+
     const { imageUrl } = req.body;
 
     const response = await axios.get(imageUrl, {
@@ -113,13 +144,11 @@ const uploadProfilePicture = async (req, res) => {
     await fileRef.put(imageBuffer, metadata);
     const downloadUrl = await fileRef.getDownloadURL();
 
-    const userId = user.uid;
-
-    await user.updateProfile({
+    await admin.auth().updateUser(userId, {
       photoURL: downloadUrl,
     });
 
-    await firebase.firestore().collection("users").doc(userId).update({
+    await admin.firestore().collection("users").doc(userId).update({
       photoURL: downloadUrl,
     });
 

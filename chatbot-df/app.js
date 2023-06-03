@@ -87,30 +87,5 @@ app.post("/dialogflow", async (req, res) => {
   }
 });
 
-// app.get("/search", async (req, res) => {
-//   const query = req.query.q;
-
-//   try {
-//     let response = await fetch(
-//       `https://www.googleapis.com/customsearch/v1?key=${key}&cx=${cx}&q=${query}`
-//     );
-
-//     const data = await response.json();
-//     const top_results = data.items.slice(0, 3);
-//     const result = top_results.map((item) => {
-//       return {
-//         title: item.title,
-//         link: item.link,
-//       };
-//     });
-//     res.send(result);
-//   } catch (error) {
-//     console.error("Error performing search:", error);
-//     res
-//       .status(500)
-//       .json({ error: "An error occurred while performing the search" });
-//   }
-// });
-
-app.listen(PORT, '0.0.0.0');
+app.listen(PORT, "0.0.0.0");
 console.log(`Listening on port ${PORT}`);

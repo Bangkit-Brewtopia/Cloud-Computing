@@ -83,7 +83,7 @@ Model used: chatbot_model_4.h5
 Tech: Python, Fast API, Google API custom search
 <p>This takes a sentence as user input and send post request ('/') and it will give the response</p>
 <br>
-Deployment on process
+Access here ``` https://chatbot-api-47mfwdpera-et.a.run.app/ ``` (test using my free tier acc)
 
 ## Chatbot Dialogflow ✔️
 Chatbot using webhook dialogflow.

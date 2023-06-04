@@ -78,8 +78,8 @@ Tech: Python, FastAPI
 * Open browser, and navigate to ``` localhost:8000/docs ``` to test endpoint with SwaggerUI 
 
 ## Chatbot ✔️
-### [!IMPORTANT] There are two options:
-### Chatbot API
+### [! IMPORTANT] There are two options:
+### 1. Chatbot API
 Tech: FastAPI, Python, chatbot_model_4.h5
 <br>
 Mechanism: Send POST request to endpoint
@@ -88,21 +88,23 @@ Mechanism: Send POST request to endpoint
 | /        | -            | GET    | Root    |
 | /        | { "input": user sentence input } | POST | Send user input to chatbot api |
 
-<br> 
-Deployed on cloud run ```https://chatbot-api-zwqpt72g4a-et.a.run.app/```
-![image](https://github.com/Bangkit-Brewtopia/Cloud-Computing/assets/94887358/84cc2809-d233-4681-aa05-beccd5bddb8e)
+###### Deployed on cloud run ```https://chatbot-api-zwqpt72g4a-et.a.run.app/```
+
+### Example
+![link](https://github.com/Bangkit-Brewtopia/Cloud-Computing/assets/94887358/84cc2809-d233-4681-aa05-beccd5bddb8e)
 
 
-### Chatbot using DialogFlow
+### 2. Chatbot using DialogFlow
+###### Webhook deployed on vercel ```https://webhook-df-ayq8.vercel.app```
 Pros: 
 + training phrases
-+ Built in interface, don't need to create interface from scratch. Just embed it on the app
-Webhook deployed on vercel ```https://webhook-df-ayq8.vercel.app```
-<br>
-[Test agent here](https://dialogflow.cloud.google.com/#/agent/brewtopia-agent-ejwx/fulfillment)
-<br>
-![image]
-
++ Built in interface, don't need to create interface from scratch. Just embed it on the app.
++ TEST AGENT HERE: 
+```sh 
+https://dialogflow.cloud.google.com/#/agent/brewtopia-agent-ejwx/fulfillment
+```
+### Example
+![df](https://github.com/Bangkit-Brewtopia/Cloud-Computing/assets/94887358/1c3cf4dd-21ed-45f2-8082-b408181b9f44)
 
 
 

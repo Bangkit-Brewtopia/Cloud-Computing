@@ -130,6 +130,10 @@ def add_item(item: Item):
     user_input = item.input
     response = generate_response(user_input)
     respList = list(response)
+    result = {
+        "message": "success",
+        "data": respList
+    }
     # if len(respList) == 2:
     #     # return respList[0]
     #     print("Chatbot:", respList[0])
@@ -140,4 +144,4 @@ def add_item(item: Item):
     #     return {response}
 
     # response = parse_only_link(user_input)
-    return respList
+    return result

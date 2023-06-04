@@ -78,20 +78,32 @@ Tech: Python, FastAPI
 * Open browser, and navigate to ``` localhost:8000/docs ``` to test endpoint with SwaggerUI 
 
 ## Chatbot ✔️
-Model used: chatbot_model_4.h5
+### [!IMPORTANT] There are two options:
+### Chatbot API
+Tech: FastAPI, Python, chatbot_model_4.h5
 <br>
-Tech: Python, Fast API, Google API custom search
-<p>This takes a sentence as user input and send post request ('/') and it will give the response</p>
-<br>
-Access here ```https://chatbot-api-47mfwdpera-et.a.run.app/``` (test using my free tier acc)
+Mechanism: Send POST request to endpoint
+| Endpoint | Request Body | Method | Purpose |
+| -------- | ------------ | ------ | ------- |
+| /        | -            | GET    | Root    |
+| /        | { "input": user sentence input } | POST | Send user input to chatbot api |
 
-## Chatbot Dialogflow ✔️
-Chatbot using webhook dialogflow.
-IT'S WORKINGGGG
-Webhook deployed on app engine ```https://brewtopia-c570c.et.r.appspot.com/```(can't call api)
-<br>
-Webhook deployed on vercel ```https://webhook-df-ayq8.vercel.app``` (WORKS)
+<br> 
+Deployed on cloud run ```https://chatbot-api-zwqpt72g4a-et.a.run.app/```
+![image](https://github.com/Bangkit-Brewtopia/Cloud-Computing/assets/94887358/84cc2809-d233-4681-aa05-beccd5bddb8e)
 
+
+### Chatbot using DialogFlow
 Pros: 
 + training phrases
-+ Built in interface, don't need to create from scratch. Just embed it on the app
++ Built in interface, don't need to create interface from scratch. Just embed it on the app
+Webhook deployed on vercel ```https://webhook-df-ayq8.vercel.app```
+<br>
+[Test agent here](https://dialogflow.cloud.google.com/#/agent/brewtopia-agent-ejwx/fulfillment)
+<br>
+![image]
+
+
+
+
+

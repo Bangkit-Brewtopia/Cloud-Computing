@@ -83,12 +83,15 @@ Model used: chatbot_model_4.h5
 Tech: Python, Fast API, Google API custom search
 <p>This takes a sentence as user input and send post request ('/') and it will give the response</p>
 <br>
-Deployment on process
+Access here ```https://chatbot-api-47mfwdpera-et.a.run.app/``` (test using my free tier acc)
 
 ## Chatbot Dialogflow ✔️
 Chatbot using webhook dialogflow.
-Webhook deployed on app engine ```https://brewtopia-c570c.et.r.appspot.com/```
-(still under development)
+IT'S WORKINGGGG
+Webhook deployed on app engine ```https://brewtopia-c570c.et.r.appspot.com/```(can't call api)
+<br>
+Webhook deployed on vercel ```https://webhook-df-ayq8.vercel.app``` (WORKS)
+
 Pros: 
 + training phrases
 + Built in interface, don't need to create from scratch. Just embed it on the app

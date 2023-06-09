@@ -107,11 +107,12 @@ def generate_response(sentence):
         for intent in intents['intents']:
             if intent['tag'] == tag:
                 response = random.choice(intent['responses'])
+                # return response
+                if 'links' in list(intent):
+                    response = random.choice(intent['responses'])
+                    links = parse_only_link(sentence)[-3:]
+                    return response, links
                 return response
-            if 'links' in list(intent):
-                response = random.choice(intent['responses'])
-                links = parse_only_link(sentence)[-3:]
-                return response, links
     else:
         return "I'm sorry, I didn't understand that."
 
@@ -130,18 +131,23 @@ def add_item(item: Item):
     user_input = item.input
     response = generate_response(user_input)
     respList = list(response)
-    result = {
-        "message": "success",
-        "data": respList
-    }
-    # if len(respList) == 2:
-    #     # return respList[0]
-    #     print("Chatbot:", respList[0])
-    #     for link in respList[1]:
-    #         print(link)
-    #         return link
-    # else:
-    #     return {response}
+    
+    if len(respList) == 2:
+        result = {
+            "message": "success",
+            "data": respList
+        }
+
+        # return respList[0]
+        # print("Chatbot:", respList[0])
+        # for link in respList[1]:
+        #     print(link)
+        #     return link
+    else:
+        result = {
+            "message": "success",
+            "data": response
+        }
 
     # response = parse_only_link(user_input)
     return result

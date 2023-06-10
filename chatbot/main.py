@@ -7,7 +7,7 @@ import json
 import numpy as np
 import tensorflow as tf
 import nltk
-import os
+import re
 nltk.download('punkt')
 nltk.download('wordnet')
 
@@ -129,7 +129,8 @@ def index():
 
 @app.post("/")
 def add_item(item: Item):
-    user_input = item.input
+    user_input = re.sub(r'[^a-zA-Z0-9\s]+', ' ', item.input)
+    print(user_input)
     response = generate_response(user_input)
     respList = list(response)
     

@@ -7,12 +7,13 @@ import json
 import numpy as np
 import tensorflow as tf
 import nltk
+import os
 nltk.download('punkt')
 nltk.download('wordnet')
 
 app = FastAPI()
 
-model = tf.keras.models.load_model('./chatbot_model_4.h5')
+model = tf.keras.models.load_model('./chatbot_model_nlp_1.h5')
 
 json_path = 'intents.json'
 with open(json_path) as intention:
@@ -41,8 +42,8 @@ wordss = np.array(words)
 
 
 def get_content(query):
-    key = 'AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ'
-    cx = '97f5dcf95601b403d'
+    key="AIzaSyBW-sTYuFO2r0N0LmMAcxqXKSYY9K0KYYQ"
+    cx="97f5dcf95601b403d"
     encoded_query = urllib.parse.quote(query)
     url = f"https://www.googleapis.com/customsearch/v1?key={key}&cx={cx}&q={encoded_query}"
     # headers = {

@@ -18,30 +18,30 @@
           {
             "tag": "types",
             "patterns": ["Ada apa sih jenis kopi?", "Jenis kopi di Indonesia ada apa aja?", "Jenis kopi ada apa aja?"],
-            "responses": ["Berdasarkan hal yang kamu tanyakan, saya menemukan tautan-tautan berikut yang bisa membantu","Hmmmm....ini adalah tautan-tautan yang saya kira bisa membantu kamu","Berdasarkan pertanyaan kamu, saya menemukan tautan-tautan berikut"],
+            "responses": ["Berdasarkan hal yang kamu tanyakan, saya menemukan tautan-tautan berikut yang bisa membantu","Hmmmm....ini adalah tautan-tautan yang saya kira bisa membantu kamu","Berdasarkan pertanyaan kamu, saya menemukan tautan-tautan berikut","Berdasarkan pencarian saya, saya menemukan beberapa sumber yang bisa membantu kamu."],
             "links": []
           },
           {
             "tag": "brewing",
             "patterns": ["Bagaimana cara brew kopi?", "Bagaimana teknik brew kopi?", "Bagaimana cara membuat kopi yang baik?"],
-            "responses": ["Yuk, coba cek tautan-tautan berikut yang saya temukan","Cek tautan-tautan berikut, semoga bisa membantu!","Hmmm.... saya menemukan tautan yang bisa membantu, yuk dicek!"],
+            "responses": ["Yuk, coba cek tautan-tautan berikut yang saya temukan","Cek tautan-tautan berikut, semoga bisa membantu!","Hmmm.... saya menemukan tautan yang bisa membantu, yuk dicek!","Mari cek tautan berikut!","Hmmmmm... check this out deh!","Yuk coba dicek dulu tautan yang saya temukan ini"],
             "links": []
           },
           {
             "tag": "flavors",
-            "patterns": ["Apakah kopi punya rasa-rasa lain?", "Beritahu saya tentang rasa kopi", "Rasa apa saja yang bisa saya temukan di kopi?", "Rasa kopi ada apa saja?", "Apa saja rasa kopi?"],
-            "responses": ["Kopi bisa punya beberapa hint rasa, seperti cokelat, karamel, buah, ataupun kacang-kacangan. Berikut adalah tautan yang bisa memberikan kamu informasi lebih lengkap! ","Rasa kopi bisa dipengaruhi oleh teknik brewing nya, atau level roast nya, dan juga oleh jenis beans nya. Berikut adalah tautan-tautan yang bisa memberi kamu informasi lebih jauh"],
+            "patterns": ["Apakah kopi punya rasa-rasa lain?", "Beritahu saya tentang rasa kopi", "Rasa apa saja yang bisa saya temukan di kopi?", "Rasa kopi ada apa saja?", "Apa saja rasa kopi?","rasa kopi?"],
+            "responses": ["Kopi bisa punya beberapa hint rasa, seperti cokelat, karamel, buah, ataupun kacang-kacangan. Berikut adalah tautan yang bisa memberikan kamu informasi lebih lengkap! ","Rasa kopi bisa dipengaruhi oleh teknik brewing nya, atau level roast nya, dan juga oleh jenis beans nya. Berikut adalah tautan-tautan yang bisa memberi kamu informasi lebih jauh", "Coba cek tautan ini deh!", "Oooooh saya menemukan beberapa tautan yang sepertinya bisa membantu kamu, yuk dicek!"],
             "links": []
           },
           {
             "tag": "caffeine",
-            "patterns": ["Berapa tinggi kafein di kopi?", "Tingkatan kafein di kopi", "Apakah kopi memiliki kafein yang tinggi?","Kafein di kopi kira-kira ada berapa ya?"],
+            "patterns": ["Berapa tinggi kafein di kopi?", "Tingkatan kafein di kopi", "Apakah kopi memiliki kafein yang tinggi?","Kafein di kopi kira-kira ada berapa ya?","kafein di kopi", "berapa banyak kafein di kopi?"],
             "responses": ["Kafein di dalam kopi bisa beragam, dipengaruhi oleh jenis beans yang digunakan ataupun metode pengolahannya. Untuk informasi lebih lengkap, kamu bisa cek tautan-tautan berikut", "Rata-rata kopi memiliki kafein sebanyak 95mg. Berikut adalah tautan yang memiliki informasi lebih lengkap mengenai hal tersebut. Semoga membantu!"],
             "links": []
           },
           {
             "tag": "brands",
-            "patterns": ["Apa brand kopi yang terkenal di Indonesia?", "Apa brand kopi yang disukai di Indonesia?", "Sebutin dong beberapa brand kopi terkenal yang ada di Indonesia"],
+            "patterns": ["Apa brand kopi yang terkenal di Indonesia?", "Apa brand kopi yang disukai di Indonesia?", "Sebutin dong beberapa brand kopi terkenal yang ada di Indonesia","brand kopi di Indonesia?", "Apa saja brand kopi terkenal di Indonesia?"],
             "responses": ["Banyak sekali brand kopi yang terkenal di Indonesia. Namun jika harus memilih, ini beberapa tautan tentang beberapa brand kopi yang ada di Indonesia yang mungkin kamu suka.", "Menarik. Saya mencoba mencari tahu beberapa brand kopi terkenal yang ada di Indonesia, mungkin kamu bisa cari tau beberapa brand yang tautannya ada di bawah."],
             "links": []
           }

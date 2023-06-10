@@ -1,5 +1,7 @@
 # Cloud-Computing
 
+API is alredy deployed using Google Cloud Run and can be accessed via ```https://api-zwqpt72g4a-et.a.run.app/```
+
 ## Authentication And User-related API ✔️
 ### Tech: Firebase Authentication, Firestore, Node JS, Express JS
 #### List of endpoints:

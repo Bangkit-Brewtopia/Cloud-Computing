@@ -98,26 +98,32 @@ def bag_of_words(sentence, words, show_details=False):
 
 
 def generate_response(sentence):
-    input_data = bag_of_words(sentence, words)
-    input_data = input_data.reshape(1, input_data.shape[0])
-    results = model.predict(input_data)[0]
-    results_index = np.argmax(results)
-    tag = classes[results_index]
+    try:
+        input_data = bag_of_words(sentence, words)
+        input_data = input_data.reshape(1, input_data.shape[0])
+        results = model.predict(input_data)[0]
+        results_index = np.argmax(results)
+        tag = classes[results_index]
 
-    if results[results_index] > 0.5:
-        for intent in intents['intents']:
-            if intent['tag'] == tag:
-                response = random.choice(intent['responses'])
-                # return response
-                if 'links' in list(intent):
+        if results[results_index] > 0.5:
+            for intent in intents['intents']:
+                if intent['tag'] == tag:
                     response = random.choice(intent['responses'])
-                    links = parse_only_link(sentence)[-3:]
-                    return response, links
-                return response
-    else:
-        return "I'm sorry, I didn't understand that."
+                    # return response
+                    if 'links' in list(intent):
+                        response = random.choice(intent['responses'])
+                        links = parse_only_link(sentence)[-3:]
+                        return response, links
+                    return response
+        else:
+            return "I'm sorry, I didn't understand that."
+    except:
+        return {
+            "message": "failed",
+            "data": '-'
+        }
 
-
+    
 class Item(BaseModel):
     input: str
 
@@ -129,27 +135,29 @@ def index():
 
 @app.post("/")
 def add_item(item: Item):
+    # print(user_input)
     user_input = re.sub(r'[^a-zA-Z0-9\s]+', ' ', item.input)
-    print(user_input)
-    response = generate_response(user_input)
-    respList = list(response)
+
+    try:
+        response = generate_response(user_input)
+        respList = list(response)
+        
+        if len(respList) == 2:
+            result = {
+                "message": "success",
+                "data": respList
+            }
+        else:
+            result = {
+                "message": "success",
+                "data": response
+            }
+        return result
+    except: 
+        result = {
+            "message": "failed",
+            "data": '-'
+        }
+        return result
+
     
-    if len(respList) == 2:
-        result = {
-            "message": "success",
-            "data": respList
-        }
-
-        # return respList[0]
-        # print("Chatbot:", respList[0])
-        # for link in respList[1]:
-        #     print(link)
-        #     return link
-    else:
-        result = {
-            "message": "success",
-            "data": response
-        }
-
-    # response = parse_only_link(user_input)
-    return result

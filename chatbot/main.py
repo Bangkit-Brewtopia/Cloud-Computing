@@ -143,10 +143,17 @@ def add_item(item: Item):
         respList = list(response)
         
         if len(respList) == 2:
+
             result = {
                 "message": "success",
                 "data": respList
             }
+
+            # Flatten the nested list
+            result["data"].extend(result["data"][1])
+
+            # Remove the nested list at index 1
+            result["data"].pop(1)
         else:
             result = {
                 "message": "success",

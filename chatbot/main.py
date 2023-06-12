@@ -116,7 +116,7 @@ def generate_response(sentence):
                         return response, links
                     return response
         else:
-            return "I'm sorry, I didn't understand that."
+            return "Maaf saya tidak mengerti :("
     except:
         return {
             "message": "failed",
@@ -157,7 +157,7 @@ def add_item(item: Item):
         else:
             result = {
                 "message": "success",
-                "data": response
+                "data": [response]
             }
         return result
     except: 

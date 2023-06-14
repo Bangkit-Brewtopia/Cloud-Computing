@@ -66,21 +66,17 @@ const editProfile = async (req, res) => {
   try {
     const { name, password } = req.body;
 
-    const authHeader = req.headers.authorization;
-    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+    const user = req.user;
 
-    if (!idToken) {
+    if (!user) {
       return res.status(401).json({ error: true, message: "Unauthorized" });
     }
 
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    const userId = decodedToken.uid;
+    const userId = user.uid;
 
     if (!userId) {
       return res.status(401).json({ error: "User is not authenticated" });
     }
-
-    const user = await admin.auth().getUser(userId);
 
     if (user.displayName !== name) {
       await admin.auth().updateUser(userId, {
@@ -108,21 +104,17 @@ const editProfile = async (req, res) => {
 
 const uploadProfilePicture = async (req, res) => {
   try {
-    const authHeader = req.headers.authorization;
-    const idToken = authHeader ? authHeader.split("Bearer ")[1] : null;
+    const user = req.user;
 
-    if (!idToken) {
+    if (!user) {
       return res.status(401).json({ error: true, message: "Unauthorized" });
     }
 
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    const userId = decodedToken.uid;
+    const userId = user.uid;
 
     if (!userId) {
       return res.status(401).json({ error: "User is not authenticated" });
     }
-
-    const user = await admin.auth().getUser(userId);
 
     const { imageUrl } = req.body;
 

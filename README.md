@@ -1,5 +1,7 @@
 # Cloud-Computing
 
+API is alredy deployed using Google Cloud Run and can be accessed via ```https://api-zwqpt72g4a-et.a.run.app/```
+
 ## Authentication And User-related API ✔️
 ### Tech: Firebase Authentication, Firestore, Node JS, Express JS
 #### List of endpoints:
@@ -33,10 +35,10 @@ npm run start
 ## Article-related API ✔️
 ### Tech: Firestore, Node JS, Express JS
 #### List of endpoints:
-| Endpoint     | Request Body      | Method     | Purpose |
-| ------------- | ------------- | -------- | -------- |
-| api/article/          | -         | Get  | Get all of the articles |
-| api/article/:id            | -        | Get  | Get article based on ID |
+| Endpoint     | Request Body      | Header      | Method     | Purpose |
+| ------------- | ------------- | ------------- | -------- | -------- |
+| api/article/          | -         | {Authorization : Bearer [token]}         | Get  | Get all of the articles |
+| api/article/:id            | -        | {Authorization : Bearer [token]}         | Get  | Get article based on ID |
 
 #### How to run:
 * Clone this repository 

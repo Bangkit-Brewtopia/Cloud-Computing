@@ -90,7 +90,11 @@ Mechanism: Send POST request to endpoint
 | /        | -            | GET    | Root    |
 | /        | { "input": user sentence input } | POST | Send user input to chatbot api |
 
+#### Bahasa Indonesia
 ###### Deployed on cloud run ```https://chatbot-api-zwqpt72g4a-et.a.run.app/```
+
+#### English
+##### Deployed on cloud run ```https://chatbot-en-api-zwqpt72g4a-et.a.run.app/```
 
 ### Example
 ![link](https://github.com/Bangkit-Brewtopia/Cloud-Computing/assets/94887358/84cc2809-d233-4681-aa05-beccd5bddb8e)

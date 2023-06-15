@@ -13,7 +13,7 @@ nltk.download('wordnet')
 
 app = FastAPI()
 
-model = tf.keras.models.load_model('./chatbot_model_eng_2.h5')
+model = tf.keras.models.load_model('./chatbot_model_eng.h5')
 
 json_path = 'intents_eng.json'
 with open(json_path) as intention:
@@ -140,6 +140,7 @@ def add_item(item: Item):
 
     try:
         response = generate_response(user_input)
+        print(response)
         respList = list(response)
         
         if len(respList) == 2:

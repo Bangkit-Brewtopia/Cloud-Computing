@@ -13,7 +13,7 @@ nltk.download('wordnet')
 
 app = FastAPI()
 
-model = tf.keras.models.load_model('./chatbot_model_eng.h5')
+model = tf.keras.models.load_model('./chatbot_model_eng_2.h5')
 
 json_path = 'intents_eng.json'
 with open(json_path) as intention:
@@ -116,7 +116,7 @@ def generate_response(sentence):
                         return response, links
                     return response
         else:
-            return "Maaf saya tidak mengerti :("
+            return "I'm sorry I didn't understand that"
     except:
         return {
             "message": "failed",

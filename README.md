@@ -7,11 +7,11 @@ API is alredy deployed using Google Cloud Run and can be accessed via ```https:/
 #### List of endpoints:
 | Endpoint     | Request Body      | Method     | Purpose |
 | ------------- | ------------- | -------- | -------- |
-| api/user/signup          | email, password, name         | Post  | Create new credentail for a user |
-| api/user/signin            | email, password        | Post  | Starting a session based on user credential |
+| api/user/signup          | email (str), password (str), name (str)         | Post  | Create new credentail for a user |
+| api/user/signin            | email (str), password (str)        | Post  | Starting a session based on user credential |
 | api/user/logout          | -         | Post  | Stop the user session |
-| api/user/edit-profile            | name, password        | Put  | Update user's name and password |
-| api/user/upload-profile-picture            | image        | Post  | Upload image for profile picture by passing the image URL |
+| api/user/edit-profile            | name (str), password (str)        | Put  | Update user's name and password |
+| api/user/upload-profile-picture            | imageUrl (str)        | Post  | Upload image for profile picture by passing the image URL |
 
 #### How to run:
 * Clone this repository 
@@ -40,7 +40,7 @@ npm run start
 | api/article/          | -         | Get  | Get all of the articles |
 | api/article/:id            | -        | Get  | Get article based on ID |
 
-#### How to run:
+#### How to run locally:
 * Clone this repository 
 ```sh
 https://github.com/Bangkit-Brewtopia/Cloud-Computing.git
@@ -68,7 +68,7 @@ The model is accessible via ```https://predict-zwqpt72g4a-et.a.run.app/predict``
 <br>
 Tech: Python, FastAPI
 <br>
-#### How to run:
+#### How to run locally:
 * Clone this repository 
 ``` https://github.com/Bangkit-Brewtopia/Cloud-Computing.git ```
 * Move to model-deployment directory
